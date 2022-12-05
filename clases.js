@@ -31,38 +31,38 @@ class Producto {
   //Método para crear los productos en el HTML como cards, usando boostrap.
   mostrarProducto() {
     let div = document.createElement("div");
-    div.className = "card mx-2";
-    div.style.width = "18 rem";
+    div.className = "card";
+    // div.style.width = "18 rem";
 
     let img = document.createElement("img");
-    img.className = "card-img-top";
+    img.className = "card-img";
     img.setAttribute("src", `${this.imagen}`);
     img.setAttribute("alt", `${this.altimagen}`);
+    let categoriaProducto = document.createElement("span");
+    categoriaProducto.className = "card-category";
+    categoriaProducto.innerText = `${this.categoria}`;
+    div.append(categoriaProducto);
     div.append(img);
 
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
 
     let nombreProducto = document.createElement("h3");
-
     nombreProducto.className = "card-title";
     nombreProducto.innerText = `${this.nombre}`;
     cardBody.append(nombreProducto);
 
-    let categoriaProducto = document.createElement("p");
-    categoriaProducto.className = "card-text";
-    categoriaProducto.innerText = `Categoría ${this.categoria}`;
-    cardBody.append(categoriaProducto);
+    let precioProdcuto = document.createElement("p");
+    precioProdcuto.className = "card-price";
+    precioProdcuto.innerText = `$ ${this.precio}`;
+    cardBody.append(precioProdcuto);
+
 
     let descripcionProducto = document.createElement("p");
     descripcionProducto.className = "card-text";
     descripcionProducto.innerText = `${this.descripcion}`;
     cardBody.append(descripcionProducto);
 
-    let precioProdcuto = document.createElement("p");
-    precioProdcuto.className = "card-text";
-    precioProdcuto.innerText = `${this.precio}`;
-    cardBody.append(precioProdcuto);
 
     let botonCompraProdcuto = document.createElement("button");
     botonCompraProdcuto.className = "btn btn-primary addCart";
@@ -71,7 +71,7 @@ class Producto {
     cardBody.append(botonCompraProdcuto);
 
     let botonDetalleProducto = document.createElement("button");
-    botonDetalleProducto.className = "btn btn-decondary";
+    botonDetalleProducto.className = "btn btn-secondary";
     botonDetalleProducto.innerText = "Ver detalle";
     botonDetalleProducto.setAttribute("data-bs-toggle", "modal");
     botonDetalleProducto.setAttribute("data-bs-target", "#exampleModal");
