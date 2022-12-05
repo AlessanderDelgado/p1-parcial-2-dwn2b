@@ -138,33 +138,17 @@ class Producto {
   //   divColConTexto.append(precioProductoDetalle);
   //   divColConTexto.append(botonCompraCardBody);
 
-
   //   //div col con imagen (le agrego la imagen)
   //   divColConImagen.append(imgProducto);
-
 
   //   //div row que contiene las col (le agrego las dos col)
   //   divContenedorRow.append(divColConImagen);
   //   divContenedorRow.append(divColConTexto);
 
-
   //   return divContenedorRow;
 
   // }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 class Carrito {
   productos;
