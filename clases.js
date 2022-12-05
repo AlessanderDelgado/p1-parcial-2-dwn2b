@@ -201,7 +201,6 @@ class Carrito {
     let total = 0;
     this.productos.forEach((p) => {
       total += p.precio;
-      console.log(total)
     });
     return total;
   }

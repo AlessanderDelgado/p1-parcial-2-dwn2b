@@ -98,7 +98,7 @@ function agregarAlCarrito(idProducto){
 
     // let misProductos = carritoDeCompras.devolverProductos();
     // contenedorItemProducto.replaceChildren();
-    // totalCompra ();
+    totalCompra ();
     // misProductos.forEach(element => {
     //     contenedorItemProducto.append(carritoDeCompras.mostrarCardProducto(element));
     // });
@@ -113,13 +113,16 @@ function agregarAlCarrito(idProducto){
 //     carritoDeCompras.quitarProductoDelCarrito(idProducto);
 //     cantidadDeProductos.innerText = carritoDeCompras.cantidadDeProductos();
 //     tuTotalCantidad.innerText = carritoDeCompras.cantidadDeProductos();
-//     totalCompra ();
+    totalCompra ();
 
 // }
 
+function devolverTotal(){
+    let carrito = new Carrito()
+    console.log(carritoDeCompras.mostrarPrecioTotalDeLaCompra()) 
+  }
 
 function totalCompra (){
-    console.log('Hola')
     let tuTotal = document.querySelector(".tuTotal");
     tuTotal.innerText = carritoDeCompras.mostrarPrecioTotalDeLaCompra();
 }
@@ -130,7 +133,7 @@ function totalCompra (){
 //     carritoDeCompras.quitarTodosLosProducto();
 //     document.querySelector("#contenedorItemCarrito").replaceChildren();
 
-//     totalCompra ();
+    totalCompra ();
 //     cantidadDeProductos.innerText = carritoDeCompras.cantidadDeProductos();
 //     tuTotalCantidad.innerText = carritoDeCompras.cantidadDeProductos();
 
