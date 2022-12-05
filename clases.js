@@ -101,48 +101,44 @@ class Producto {
     imgProducto.className = "img";
     imgProducto.setAttribute("src",`${producto.imagen}`);
     imgProducto.setAttribute("alt",`${producto.altimagen}`);
+    divColConImagen.append(imgProducto);
+
+    divContenedorRow.append(divColConImagen);
 
     //este es el div col con texto
     let divColConTexto = document.createElement("div");
-    divColConTexto.className = "col-md-8 card-body p-5";
+    divColConTexto.className = "modal-container";
 
     //h3 titulo del detalle
     let tituloDetalle = document.createElement("h3");
-    tituloDetalle.className = "card-text fw-bold text-dark-violet fs-2";
+    tituloDetalle.className = "modal-title";
     tituloDetalle.innerText = `${producto.nombre}`;
+    divColConTexto.append(tituloDetalle);
 
     //h4 descripCorta del detalle
-    let productoDescripcionCorta = document.createElement("h3");
-    productoDescripcionCorta.className = "card-text fw-bold text-dark-violet fs-5";
+    let productoDescripcionCorta = document.createElement("p");
+    productoDescripcionCorta.className = "modal-description";
     productoDescripcionCorta.innerText = `${producto.descripcion}`;
+    divColConTexto.append(productoDescripcionCorta);
 
     //p descripcion larga del producto
     let productoDescripcionLarga = document.createElement("p");
-    productoDescripcionLarga.className = "fs-5";
-    productoDescripcionLarga.innerText = `${producto.descripcionlarga}`;
+    productoDescripcionLarga.className = "modal-long-description";
+    productoDescripcionLarga.innerText = `${producto.infoextra}`;
+    divColConTexto.append(productoDescripcionLarga);
 
     //precio del producto
     let precioProductoDetalle = document.createElement("p");
-    precioProductoDetalle.className = "fs-3 fw-bold";
+    precioProductoDetalle.className = "modal-price";
     precioProductoDetalle.innerText = `$ ${producto.precio}`;
+    divColConTexto.append(precioProductoDetalle);
 
     let botonCompraCardBody = document.createElement("button");
-    botonCompraCardBody.className = "btn shadow-sm btn-violet-gradient  my-3 addCart";
+    botonCompraCardBody.className = "btn btn-primary";
     botonCompraCardBody.innerText = "Agregar al carrito";
     botonCompraCardBody.setAttribute("onclick",`agregarAlCarrito(${this.id})`);
-
-    //div col con texto (le agrego los elementos)
-    divColConTexto.append(tituloDetalle);
-    divColConTexto.append(productoDescripcionCorta);
-    divColConTexto.append(productoDescripcionLarga);
-    divColConTexto.append(precioProductoDetalle);
     divColConTexto.append(botonCompraCardBody);
 
-    //div col con imagen (le agrego la imagen)
-    divColConImagen.append(imgProducto);
-
-    //div row que contiene las col (le agrego las dos col)
-    divContenedorRow.append(divColConImagen);
     divContenedorRow.append(divColConTexto);
 
     return divContenedorRow;
