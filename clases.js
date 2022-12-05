@@ -32,7 +32,6 @@ class Producto {
   mostrarProducto() {
     let div = document.createElement("div");
     div.className = "card";
-    // div.style.width = "18 rem";
 
     let img = document.createElement("img");
     img.className = "card-img";
@@ -46,6 +45,17 @@ class Producto {
 
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
+
+    let botonDetalleProducto = document.createElement("button");
+    botonDetalleProducto.className = "fa-solid fa-circle-info btn btn-secondary";
+    botonDetalleProducto.innerText = "";
+    botonDetalleProducto.setAttribute("data-bs-toggle", "modal");
+    botonDetalleProducto.setAttribute("data-bs-target", "#exampleModal");
+    botonDetalleProducto.setAttribute(
+      "onclick",
+      `mostrarModalDetalle(${this.id})`
+    );
+    cardBody.append(botonDetalleProducto);
 
     let nombreProducto = document.createElement("h3");
     nombreProducto.className = "card-title";
@@ -70,84 +80,74 @@ class Producto {
     botonCompraProdcuto.setAttribute("onclick", `agregarAlCarrito(${this.id})`);
     cardBody.append(botonCompraProdcuto);
 
-    let botonDetalleProducto = document.createElement("button");
-    botonDetalleProducto.className = "btn btn-secondary";
-    botonDetalleProducto.innerText = "Ver detalle";
-    botonDetalleProducto.setAttribute("data-bs-toggle", "modal");
-    botonDetalleProducto.setAttribute("data-bs-target", "#exampleModal");
-    botonDetalleProducto.setAttribute(
-      "onclick",
-      `mostrarModalDetalle(${this.id})`
-    );
-    cardBody.append(botonDetalleProducto);
 
     div.append(cardBody);
 
     return div;
   }
 
-  // imprimirModal(producto){
+  imprimirModal(producto){
 
-  //   //este es el div row que contiene las col
-  //   let divContenedorRow = document.createElement("div");
-  //   divContenedorRow.className = "row";
+    //este es el div row que contiene las col
+    let divContenedorRow = document.createElement("div");
+    divContenedorRow.className = "modal";
 
-  //   //este es el div col con imagen
-  //   let divColConImagen = document.createElement("div");
-  //   divColConImagen.className = "col-12 col-md-3 py-2";
+    //este es el div col con imagen
+    let divColConImagen = document.createElement("div");
+    divColConImagen.className = "modal-img";
 
-  //   //esta imagen va dentro del div col
-  //   let imgProducto = document.createElement("img");
-  //   imgProducto.className = "img-fluid mx-auto";
-  //   imgProducto.setAttribute("src",`${producto.imagen}`);
-  //   imgProducto.setAttribute("alt",`mandala con colores vibrantes`);
+    //esta imagen va dentro del div col
+    let imgProducto = document.createElement("img");
+    imgProducto.className = "img";
+    imgProducto.setAttribute("src",`${producto.imagen}`);
+    imgProducto.setAttribute("alt",`${producto.altimagen}`);
 
-  //   //este es el div col con texto
-  //   let divColConTexto = document.createElement("div");
-  //   divColConTexto.className = "col-md-8 card-body p-5";
+    //este es el div col con texto
+    let divColConTexto = document.createElement("div");
+    divColConTexto.className = "col-md-8 card-body p-5";
 
-  //   //h3 titulo del detalle
-  //   let tituloDetalle = document.createElement("h3");
-  //   tituloDetalle.className = "card-text fw-bold text-dark-violet fs-2";
-  //   tituloDetalle.innerText = `${producto.nombre}`;
+    //h3 titulo del detalle
+    let tituloDetalle = document.createElement("h3");
+    tituloDetalle.className = "card-text fw-bold text-dark-violet fs-2";
+    tituloDetalle.innerText = `${producto.nombre}`;
 
-  //   //h4 descripCorta del detalle
-  //   let productoDescripcionCorta = document.createElement("h3");
-  //   productoDescripcionCorta.className = "card-text fw-bold text-dark-violet fs-5";
-  //   productoDescripcionCorta.innerText = `${producto.descripcion}`;
+    //h4 descripCorta del detalle
+    let productoDescripcionCorta = document.createElement("h3");
+    productoDescripcionCorta.className = "card-text fw-bold text-dark-violet fs-5";
+    productoDescripcionCorta.innerText = `${producto.descripcion}`;
 
-  //   //p descripcion larga del producto
-  //   let productoDescripcionLarga = document.createElement("p");
-  //   productoDescripcionLarga.className = "fs-5";
-  //   productoDescripcionLarga.innerText = `${producto.descripcionlarga}`;
+    //p descripcion larga del producto
+    let productoDescripcionLarga = document.createElement("p");
+    productoDescripcionLarga.className = "fs-5";
+    productoDescripcionLarga.innerText = `${producto.descripcionlarga}`;
 
-  //   //precio del producto
-  //   let precioProductoDetalle = document.createElement("p");
-  //   precioProductoDetalle.className = "fs-3 fw-bold";
-  //   precioProductoDetalle.innerText = `$ ${producto.precio}`;
+    //precio del producto
+    let precioProductoDetalle = document.createElement("p");
+    precioProductoDetalle.className = "fs-3 fw-bold";
+    precioProductoDetalle.innerText = `$ ${producto.precio}`;
 
-  //   let botonCompraCardBody = document.createElement("button");
-  //   botonCompraCardBody.className = "btn shadow-sm btn-violet-gradient  my-3 addCart";
-  //   botonCompraCardBody.innerText = "Agregar al carrito";
-  //   botonCompraCardBody.setAttribute("onclick",`agregarAlCarrito(${this.id})`);
+    let botonCompraCardBody = document.createElement("button");
+    botonCompraCardBody.className = "btn shadow-sm btn-violet-gradient  my-3 addCart";
+    botonCompraCardBody.innerText = "Agregar al carrito";
+    botonCompraCardBody.setAttribute("onclick",`agregarAlCarrito(${this.id})`);
 
-  //   //div col con texto (le agrego los elementos)
-  //   divColConTexto.append(tituloDetalle);
-  //   divColConTexto.append(productoDescripcionCorta);
-  //   divColConTexto.append(productoDescripcionLarga);
-  //   divColConTexto.append(precioProductoDetalle);
-  //   divColConTexto.append(botonCompraCardBody);
+    //div col con texto (le agrego los elementos)
+    divColConTexto.append(tituloDetalle);
+    divColConTexto.append(productoDescripcionCorta);
+    divColConTexto.append(productoDescripcionLarga);
+    divColConTexto.append(precioProductoDetalle);
+    divColConTexto.append(botonCompraCardBody);
 
-  //   //div col con imagen (le agrego la imagen)
-  //   divColConImagen.append(imgProducto);
+    //div col con imagen (le agrego la imagen)
+    divColConImagen.append(imgProducto);
 
-  //   //div row que contiene las col (le agrego las dos col)
-  //   divContenedorRow.append(divColConImagen);
-  //   divContenedorRow.append(divColConTexto);
+    //div row que contiene las col (le agrego las dos col)
+    divContenedorRow.append(divColConImagen);
+    divContenedorRow.append(divColConTexto);
 
-  //   return divContenedorRow;
+    return divContenedorRow;
 
-  // }
+  }
 }
 
 class Carrito {

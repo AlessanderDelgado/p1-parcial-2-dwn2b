@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="styles.css" />
         <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>  -->
+        <script src="https://kit.fontawesome.com/5ac1bd9100.js" crossorigin="anonymous"></script>
 
     </head>
     <body>
@@ -16,28 +17,30 @@
         </header>
         <main>
             <div id="minicarrito">
-                <p><span id="monstrarCantidad">0</span> ítems agregados</p>
-                <p>$<span class="tuTotal">0</span> es el total</p>
-                <p>Filtrar por <a href="#">Categoría 1</a> | <a href="#">Categoría 2</a> | <a href="#">Categoría 3</a></p>
-                <button>Ver carrito</button>
+                <ul>
+                    <li><i class="fa-solid fa-cart-shopping"></i> <span id="monstrarCantidad">0</span> ítems agregados</li>
+                    <li>$ <span class="tuTotal">0</span> PES es el total</li>
+                    <li>
+                        <!-- Filtro de categoría, no se si se debe crear dinámico. -->
+                        <label for="categorias-productos">Filtrar por</label>
+                        <select name="categoria" id="categoria-producto" class="select">
+                                <option value="" selected disabled>--Elija una categoría--</option>
+                                <option value="Blend">Blend</option>
+                                <option value="Kit">Kit</option>
+                                <option value="Accesorios">Accesorios</option>
+                                <option value="Todos">Todos</option>
+                        <!-- Si dejo el value vacío en algún option, toma como valor x defecto el texto que tiene -->
+                        </select>
+                    </li>
+                    <li><button class="btn btn-complementary">Ver carrito</button></li>
+                </ul>
+
             </div>
             <h2>Productos</h2>
 
             <section id="productos" class="card-container">
                 <!-- Acá se crean dinámicamente cards con los productos -->
             </section>
-
-
-        <!-- Filtro de categoría, no se si se debe crear dinámico. -->
-        <label for="categorias-productos">Categoría:</label>
-        <select name="categoria" id="categoria-producto">
-                <option value="">--Elija una categoría--</option>
-                <option value="Blend">Blend</option>
-                <option value="Kit">Kit</option>
-                <option value="Accesorios">Accesorios</option>
-                <option value="Todos">Todos</option>
-                <!-- Si dejo el value vacío en algún option, toma como valor x defecto el texto que tiene -->
-        </select>
 
         </main>
         <footer>
