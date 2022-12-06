@@ -13,7 +13,7 @@ let productos = [
     imagen: "producto-de-ejemplo.jpg",
     altimagen: "altimagen1",
     categoria: "Blends",
-    infoxtra: "infoextra1",
+    infoextra: "infoextra1",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ let productos = [
     imagen: "producto-de-ejemplo.jpg",
     altimagen: "altimagen2",
     categoria: "Kit",
-    infoxtra: "infoextra2",
+    infoextra: "infoextra2",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ let productos = [
     imagen: "producto-de-ejemplo.jpg",
     altimagen: "altimagen3",
     categoria: "Accesorios",
-    infoxtra: "infoextra3",
+    infoextra: "infoextra3",
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ let productos = [
     imagen: "producto-de-ejemplo.jpg",
     altimagen: "altimagen4",
     categoria: "Blends",
-    infoxtra: "infoextra4",
+    infoextra: "infoextra4",
   },
   {
     id: 5,
@@ -53,7 +53,7 @@ let productos = [
     imagen: "producto-de-ejemplo.jpg",
     altimagen: "altimagen5",
     categoria: "Kit",
-    infoxtra: "infoextra5",
+    infoextra: "infoextra5",
   },
   {
     id: 6,
@@ -63,7 +63,7 @@ let productos = [
     imagen: "producto-de-ejemplo.jpg",
     altimagen: "altimagen5",
     categoria: "Accesorios",
-    infoxtra: "infoextra6",
+    infoextra: "infoextra6",
   },
 ];
 
@@ -72,7 +72,7 @@ let sectionProducto = document.querySelector("#productos");
 let carritoDeCompras = new Carrito();
 let cantidadDeProductos = document.querySelector("#monstrarCantidad");
 let removerTodosLosProductos = document.querySelector("#removeAllProd");
-// let tuTotalCantidad = document.querySelector("#tuTotalCantidad");
+let tuTotalCantidad = document.querySelector("#tuTotalCantidad");
 
 function mostrarProductos(arrayProducto) {
   arrayProducto.forEach((p) => {
@@ -100,7 +100,7 @@ function agregarAlCarrito(idProducto) {
     productoArray.imagen,
     productoArray.altimagen,
     productoArray.categoria,
-    productoArray.infoxtra
+    productoArray.infoextra
   );
   carritoDeCompras.agregarProducto(producto);
   cantidadDeProductos.innerText = carritoDeCompras.cantidadDeProductos();
@@ -133,15 +133,15 @@ function totalCompra() {
   tuTotal.innerText = carritoDeCompras.mostrarPrecioTotalDeLaCompra();
 }
 
-// vaciarCarrito.addEventListener("click", function(){
-//     carritoDeCompras.quitarTodosLosProducto();
-//     document.querySelector("#contenedorItemCarrito").replaceChildren();
+vaciarCarrito.addEventListener("click", function(){
+    carritoDeCompras.quitarTodosLosProducto();
+    document.querySelector("#contenedorItemCarrito").replaceChildren();
 
-// totalCompra();
-//     cantidadDeProductos.innerText = carritoDeCompras.cantidadDeProductos();
-//     tuTotalCantidad.innerText = carritoDeCompras.cantidadDeProductos();
+    totalCompra();
+    cantidadDeProductos.innerText = carritoDeCompras.cantidadDeProductos();
+    tuTotalCantidad.innerText = carritoDeCompras.cantidadDeProductos();
 
-// });
+});
 
 function mostrarModalDetalle(idProd){
     let producto = null;
@@ -151,7 +151,7 @@ function mostrarModalDetalle(idProd){
         producto = element;
       }
     });
-    let productoObject = new Producto(producto.nombre, producto.descripcion, producto.precio, producto.imagen, producto.categoria, producto.id,producto.descripcionlarga);
+    let productoObject = new Producto(producto.id, producto.nombre, producto.descripcion, producto.precio, producto.imagen, producto.categoria, producto.infoextra);
     document.querySelector("#contenedorDescripLargo").replaceChildren();
     document.querySelector("#contenedorDescripLargo").append(productoObject.imprimirModal(producto));
 }

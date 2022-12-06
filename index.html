@@ -55,13 +55,26 @@
 
         <!-- Generar el div#modalProducto y su contenido dinámicamente -->
         <div class="" id="contenedorDescripLargo"><!--  se saco el class modal a proposito -->
-            <a class="cerrar" href="javascript:void(0)">X</a>
+            <!-- <a class="cerrar" href="javascript:void(0)">X</a>
             <img src="producto-de-ejemplo.jpg" alt="Nombre del producto" />
             <h3>Producto</h3>
             <p>Descripción</p>
             <p>Precio: <span>$0</span></p>
             <p>Categoría</p>
-            <button>Agregar</button>
+            <button>Agregar</button> -->
+            <div>
+                <button type="button" class="btn  shadow-sm btn-violet-gradient w-100" id="vaciarCarrito">Vaciar carrito</button>
+            </div>
+            <div class="col-6">
+                <h2>Cantidad de productos: <span id="tuTotalCantidad"></span></h2>
+            </div>
+            <div class="col-6">
+                <h2>Precio Total: $ <span class="tuTotal"></span></h2>
+            </div>
+            <div class="col-12 modal-body d-flex flex-column" id="contenedorItemCarrito">
+                <!--div de cada producto-->
+
+            </div>
         </div>
 
         <!-- Generar el div#modalCarrito y su contenido dinámicamente

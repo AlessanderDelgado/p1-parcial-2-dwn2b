@@ -89,59 +89,60 @@ class Producto {
   imprimirModal(producto){
 
     //este es el div row que contiene las col
-    let divContenedorRow = document.createElement("div");
-    divContenedorRow.className = "modal";
+    let divModal = document.createElement("div");
+    divModal.className = "modal";
+
+    //este es el div col con texto
+    let divModalContainer = document.createElement("div");
+    divModalContainer.className = "modal-container";
 
     //este es el div col con imagen
-    let divColConImagen = document.createElement("div");
-    divColConImagen.className = "modal-img";
+    let divModalImage = document.createElement("div");
+    divModalImage.className = "modal-img";
 
     //esta imagen va dentro del div col
     let imgProducto = document.createElement("img");
     imgProducto.className = "img";
     imgProducto.setAttribute("src",`${producto.imagen}`);
     imgProducto.setAttribute("alt",`${producto.altimagen}`);
-    divColConImagen.append(imgProducto);
+    divModalImage.append(imgProducto);
 
-    divContenedorRow.append(divColConImagen);
+    divModal.append(divModalImage);
 
-    //este es el div col con texto
-    let divColConTexto = document.createElement("div");
-    divColConTexto.className = "modal-container";
 
     //h3 titulo del detalle
     let tituloDetalle = document.createElement("h3");
     tituloDetalle.className = "modal-title";
     tituloDetalle.innerText = `${producto.nombre}`;
-    divColConTexto.append(tituloDetalle);
+    divModalContainer.append(tituloDetalle);
 
     //h4 descripCorta del detalle
     let productoDescripcionCorta = document.createElement("p");
     productoDescripcionCorta.className = "modal-description";
     productoDescripcionCorta.innerText = `${producto.descripcion}`;
-    divColConTexto.append(productoDescripcionCorta);
+    divModalContainer.append(productoDescripcionCorta);
 
     //p descripcion larga del producto
     let productoDescripcionLarga = document.createElement("p");
     productoDescripcionLarga.className = "modal-long-description";
     productoDescripcionLarga.innerText = `${producto.infoextra}`;
-    divColConTexto.append(productoDescripcionLarga);
+    divModalContainer.append(productoDescripcionLarga);
 
     //precio del producto
     let precioProductoDetalle = document.createElement("p");
     precioProductoDetalle.className = "modal-price";
     precioProductoDetalle.innerText = `$ ${producto.precio}`;
-    divColConTexto.append(precioProductoDetalle);
+    divModalContainer.append(precioProductoDetalle);
 
     let botonCompraCardBody = document.createElement("button");
     botonCompraCardBody.className = "btn btn-primary";
     botonCompraCardBody.innerText = "Agregar al carrito";
     botonCompraCardBody.setAttribute("onclick",`agregarAlCarrito(${this.id})`);
-    divColConTexto.append(botonCompraCardBody);
+    divModalContainer.append(botonCompraCardBody);
 
-    divContenedorRow.append(divColConTexto);
+    divModal.append(divModalContainer);
 
-    return divContenedorRow;
+    return divModal;
 
   }
 }
