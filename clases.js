@@ -143,6 +143,22 @@ class Producto {
     botonCompraCardBody.setAttribute("onclick",`agregarAlCarrito(${this.id})`);
     divModalContent.append(botonCompraCardBody);
 
+    let botonCerrarCard = document.createElement("button");
+    botonCerrarCard.className = "fa-regular fa-circle-xmark btn btn-secondary";
+    botonCerrarCard.innerText = "";
+
+    divModalContainer.append(botonCerrarCard);
+    botonCerrarCard.addEventListener ("click", (e) => {
+
+      const target = e.target; //para guardar quién disparó el evento
+      divModal.remove();
+  });
+
+
+
+    divModalContent.append(botonCompraCardBody);
+    divModalContent.append(botonCerrarCard);
+
     divModalContainer.append(divModalContent);
 
     divModal.append(divModalContainer);
