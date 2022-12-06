@@ -107,38 +107,43 @@ class Producto {
     imgProducto.setAttribute("alt",`${producto.altimagen}`);
     divModalImage.append(imgProducto);
 
-    divModal.append(divModalImage);
+    divModalContainer.append(divModalImage);
 
+    //este es el div col con texto
+    let divModalContent = document.createElement("div");
+    divModalContent.className = "modal-content";
 
     //h3 titulo del detalle
     let tituloDetalle = document.createElement("h3");
     tituloDetalle.className = "modal-title";
     tituloDetalle.innerText = `${producto.nombre}`;
-    divModalContainer.append(tituloDetalle);
+    divModalContent.append(tituloDetalle);
 
     //h4 descripCorta del detalle
     let productoDescripcionCorta = document.createElement("p");
     productoDescripcionCorta.className = "modal-description";
     productoDescripcionCorta.innerText = `${producto.descripcion}`;
-    divModalContainer.append(productoDescripcionCorta);
+    divModalContent.append(productoDescripcionCorta);
 
     //p descripcion larga del producto
     let productoDescripcionLarga = document.createElement("p");
     productoDescripcionLarga.className = "modal-long-description";
     productoDescripcionLarga.innerText = `${producto.infoextra}`;
-    divModalContainer.append(productoDescripcionLarga);
+    divModalContent.append(productoDescripcionLarga);
 
     //precio del producto
     let precioProductoDetalle = document.createElement("p");
     precioProductoDetalle.className = "modal-price";
     precioProductoDetalle.innerText = `$ ${producto.precio}`;
-    divModalContainer.append(precioProductoDetalle);
+    divModalContent.append(precioProductoDetalle);
 
     let botonCompraCardBody = document.createElement("button");
     botonCompraCardBody.className = "btn btn-primary";
     botonCompraCardBody.innerText = "Agregar al carrito";
     botonCompraCardBody.setAttribute("onclick",`agregarAlCarrito(${this.id})`);
-    divModalContainer.append(botonCompraCardBody);
+    divModalContent.append(botonCompraCardBody);
+
+    divModalContainer.append(divModalContent);
 
     divModal.append(divModalContainer);
 
