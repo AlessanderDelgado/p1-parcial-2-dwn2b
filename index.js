@@ -67,7 +67,7 @@ let productos = [
 //Defino variables para agarrar el html e ir completándolos
 let sectionProducto = document.querySelector("#productos");
 let carritoDeCompras = new Carrito();
-let cantidadDeProductos = document.querySelector("#monstrarCantidad");
+let cantidadDeProductos = document.querySelector("#mostrarCantidad");
 let tuTotalCantidad = document.querySelector("#tuTotalCantidad");
 
 //Función para mostrar los productos. Se mostrarán como cards.
@@ -105,7 +105,7 @@ function agregarAlCarrito(idProducto) {
   tuTotalCantidad.innerText = carritoDeCompras.cantidadDeProductos();
 
   totalCompra();
- 
+
 }
 
 //Función que muestra el precio total de la compra
