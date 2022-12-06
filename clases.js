@@ -28,10 +28,10 @@ class Producto {
     this.infoextra = infoextra;
   }
 
-  //Método para crear los productos en el HTML como cards, usando boostrap.
+  //Método para crear los productos en el HTML como cards.
   mostrarProducto() {
-    let div = document.createElement("div");
-    div.className = "card";
+    let divProducto = document.createElement("div");
+    divProducto.className = "card";
 
     let img = document.createElement("img");
     img.className = "card-img";
@@ -40,8 +40,8 @@ class Producto {
     let categoriaProducto = document.createElement("span");
     categoriaProducto.className = "card-category";
     categoriaProducto.innerText = `${this.categoria}`;
-    div.append(categoriaProducto);
-    div.append(img);
+    divProducto.append(categoriaProducto);
+    divProducto.append(img);
 
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
@@ -81,26 +81,23 @@ class Producto {
     cardBody.append(botonCompraProdcuto);
 
 
-    div.append(cardBody);
+    divProducto.append(cardBody);
 
-    return div;
+    return divProducto;
   }
 
+  //Método para imprimir el modal del detalle del producto
   imprimirModal(producto){
 
-    //este es el div row que contiene las col
     let divModal = document.createElement("div");
     divModal.className = "modal";
 
-    //este es el div col con texto
     let divModalContainer = document.createElement("div");
     divModalContainer.className = "modal-container";
 
-    //este es el div col con imagen
     let divModalImage = document.createElement("div");
     divModalImage.className = "modal-img";
 
-    //esta imagen va dentro del div col
     let imgProducto = document.createElement("img");
     imgProducto.className = "img";
     imgProducto.setAttribute("src",`${producto.imagen}`);
@@ -109,52 +106,47 @@ class Producto {
 
     divModalContainer.append(divModalImage);
 
-    //este es el div col con texto
     let divModalContent = document.createElement("div");
     divModalContent.className = "modal-content";
 
-    //h3 titulo del detalle
     let tituloDetalle = document.createElement("h3");
     tituloDetalle.className = "modal-title";
     tituloDetalle.innerText = `${producto.nombre}`;
     divModalContent.append(tituloDetalle);
 
-    //h4 descripCorta del detalle
     let productoDescripcionCorta = document.createElement("p");
     productoDescripcionCorta.className = "modal-description";
     productoDescripcionCorta.innerText = `${producto.descripcion}`;
     divModalContent.append(productoDescripcionCorta);
 
-    //p descripcion larga del producto
-    let productoDescripcionLarga = document.createElement("p");
-    productoDescripcionLarga.className = "modal-long-description";
-    productoDescripcionLarga.innerText = `${producto.infoextra}`;
-    divModalContent.append(productoDescripcionLarga);
+    let productoInfoExtra = document.createElement("p");
+    productoInfoExtra.className = "modal-long-description";
+    productoInfoExtra.innerText = `${producto.infoextra}`;
+    divModalContent.append(productoInfoExtra);
 
-    //precio del producto
-    let precioProductoDetalle = document.createElement("p");
-    precioProductoDetalle.className = "modal-price";
-    precioProductoDetalle.innerText = `$ ${producto.precio}`;
-    divModalContent.append(precioProductoDetalle);
+  
+    let precioProductoPrecio = document.createElement("p");
+    precioProductoPrecio.className = "modal-price";
+    precioProductoPrecio.innerText = `$ ${producto.precio}`;
+    divModalContent.append(precioProductoPrecio);
 
     let botonCompraCardBody = document.createElement("button");
     botonCompraCardBody.className = "btn btn-primary";
     botonCompraCardBody.innerText = "Agregar al carrito";
     botonCompraCardBody.setAttribute("onclick",`agregarAlCarrito(${this.id})`);
-    divModalContent.append(botonCompraCardBody);
+    
 
     let botonCerrarCard = document.createElement("button");
     botonCerrarCard.className = "fa-regular fa-circle-xmark btn btn-secondary";
     botonCerrarCard.innerText = "";
 
+   
     divModalContainer.append(botonCerrarCard);
     botonCerrarCard.addEventListener ("click", (e) => {
 
       const target = e.target; //para guardar quién disparó el evento
       divModal.remove();
   });
-
-
 
     divModalContent.append(botonCompraCardBody);
     divModalContent.append(botonCerrarCard);
@@ -215,7 +207,7 @@ class Carrito {
     //este es el div del card
 
     var divContenedorProducto = document.createElement("div");
-    divContenedorProducto.className = "row bg-light-violet rounded-3 mb-2 mx-5";
+    divContenedorProducto.className = "row rounded-3 mb-2 mx-5";
 
     //este es el div de la imagen
     let divContenedorImagen = document.createElement("div");
@@ -224,8 +216,8 @@ class Carrito {
     //esta imagen va dentro del div card
     let imgCardPrducto = document.createElement("img");
     imgCardPrducto.className = "card-img-top img-fluid";
-    imgCardPrducto.setAttribute("src", `${p.urlImagen}`);
-    imgCardPrducto.setAttribute("alt", `mandala con colores vibrantes`);
+    imgCardPrducto.setAttribute("src", `${p.imagen}`);
+    imgCardPrducto.setAttribute("alt", `${p.altimagen}`);
 
     //este es el div del card
     let divDescript = document.createElement("div");
@@ -234,7 +226,7 @@ class Carrito {
     //boton de compra del producto
     let botonEliminarProducto = document.createElement("button");
     botonEliminarProducto.className =
-      "btn text-dark-violet align-self-end p-2 pt-3";
+      "btn align-self-end p-2 pt-3";
     botonEliminarProducto.setAttribute(
       "onclick",
       `quitarProductoDelCarrito(${p.id}, this) `
