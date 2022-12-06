@@ -135,10 +135,16 @@ document.querySelector("select").addEventListener("change", (e) => {
   /* Guardo el option elegido */
   let categoria = e.target.value;
 
-  let filtrado = productos.filter((producto) =>
-    producto.categoria.includes(categoria)
-  );
-  console.log(filtrado);
+  if (categoria != "todas"){
+        let filtrado = productos.filter((producto) => producto.categoria.includes(categoria));
+
+        sectionProducto.replaceChildren();
+        mostrarProductos(filtrado);
+
+    }else{
+        sectionProducto.replaceChildren();
+        mostrarProductos(arregloProductos);
+    }
 });
 
 mostrarProductos(productos);
