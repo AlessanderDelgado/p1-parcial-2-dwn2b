@@ -87,7 +87,7 @@ function mostrarProductos(arrayProducto) {
   });
 }
 
-//Función para agregar los productos al carrito. FALTA MODAL. 
+//Función para agregar los productos al carrito. FALTA MODAL.
 function agregarAlCarrito(idProducto) {
   let productoArray = productos[idProducto - 1]; //Se le resta 1 al id xq los array cuentan desde 0
   let producto = new Producto(
@@ -104,14 +104,14 @@ function agregarAlCarrito(idProducto) {
   cantidadDeProductos.innerText = carritoDeCompras.cantidadDeProductos();
   tuTotalCantidad.innerText = carritoDeCompras.cantidadDeProductos();
 
-  let contenedorItemProducto = document.querySelector("#contenedorItemCarrito");
+  // let contenedorItemProducto = document.querySelector("#contenedorItemCarrito");
 
-  let misProductos = carritoDeCompras.devolverProductos();
+  // let misProductos = carritoDeCompras.devolverProductos();
   // contenedorItemProducto.replaceChildren();
   totalCompra();
-  misProductos.forEach(element => {
-      contenedorItemProducto.append(carritoDeCompras.mostrarCardProducto(element));
-  });
+  // misProductos.forEach(element => {
+  //     contenedorItemProducto.append(carritoDeCompras.mostrarCardProducto(element));
+  // });
 }
 
 
